@@ -9,19 +9,33 @@ public class randomGame {
         Scanner data = new Scanner(System.in);
         System.out.println("Adivina el numero entre 1 a 100");
         int userData = Integer.parseInt(data.nextLine());
-        var hiddenNum = 37;
-        while (userData <= hiddenNum && userData >= hiddenNum) {
+        var hiddenNum = (Math.random() * 100)+1;
+        System.out.println(hiddenNum);
+        while (true) {
             if (userData == hiddenNum){
                 System.out.println("Felicidades has adivinado el numero!"+hiddenNum);
                 break;
-            } else if (userData > 30 && userData < 40) {
-                System.out.println("Estas cerca de adivinar, sigue intentando");
-            }else if ((userData > 33) && (userData < -39)) {
-                System.out.println("Estas cerca, sigue intentando");
-            }else if((userData < -0) || (userData > 100)){
-                System.out.println("Estas fuera del rango indicado :/");
-            }else System.out.println("Sigue intentando!");
-            userData++;
+            }else if ((hiddenNum >= 1 ) || (hiddenNum <= 30)) {
+                Scanner data1 = new Scanner(System.in);
+                System.out.println("Estas cerca, haz otro intento!");
+                userData = Integer.parseInt(data1.nextLine());
+            }else if (hiddenNum >= 31 || userData <= 60) {
+                Scanner data1 = new Scanner(System.in);
+                System.out.println("Sigues cerca, intenta de nuevo!");
+                userData = Integer.parseInt(data1.nextLine());
+            }else if (userData >= 61 && userData <= 90) {
+                Scanner data1 = new Scanner(System.in);
+                System.out.println("Cerca, intenta de nuevo!");
+                userData = Integer.parseInt(data1.nextLine());
+            }
+            else if (userData > 100 || userData <= 0) {
+                System.out.println("Increible! No sigues instrucciones! :/");
+                break;
+            }else {
+                Scanner data1 = new Scanner(System.in);
+                System.out.println("Sigue intentando!");
+                userData = Integer.parseInt(data1.nextLine());
+            }
         }
     }
 }
